@@ -56,11 +56,16 @@ security unlock-keychain -p '' "$LOGIN_KEYCHAIN"
 ###############################################################################
 # Install claude
 ###############################################################################
-if [[ ! -x "$HOME/node_modules/.bin/claude" ]]; then
-    cd "$HOME"
-    debug "Installing claude..."
-    npm install --silent @anthropic-ai/claude-code@latest
-fi
+#if [[ ! -x "$HOME/node_modules/.bin/claude" ]]; then
+    #cd "$HOME"
+    #debug "Installing claude..."
+    # npm install --global --silent @anthropic-ai/claude-code@latest
+    # ^^ Fails: sandvault-$USER doesn't have write access to /opt/homebrew
+    # npm install --silent @anthropic-ai/claude-code@latest
+    # ^^ Fails: claude auto-update does not work
+    # curl -fsSL https://claude.ai/install.sh | bash
+    # ^^ Bun crashes
+#fi
 
 
 ###############################################################################
